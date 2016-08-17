@@ -54,11 +54,8 @@
 	  let view = new View(game, $el);
 	  view.setupBoard();
 
-	  // let $rows = $('.row');
-	  // debugger
-	  // let lastrow = $rows[2];
-	  // let $lastrow = $(lastrow);
-	  // $lastrow.attr("style", "border-bottom: 3px solid black");
+	  view.bindEvents();
+
 	});
 
 
@@ -72,9 +69,32 @@
 	};
 
 	View.prototype.bindEvents = function () {
+	  let $square = $(".square");
+	  $square.on("click", event => {
+	    const currentTarget = event.currentTarget;
+	    const $currentTarget = $(currentTarget);
+	    this.makeMove($currentTarget);
+	  });
 	};
 
 	View.prototype.makeMove = function ($square) {
+	  let pos = ($square.attr("pos"));
+	  pos = pos.split(",").map(el=> parseInt(el));
+	  // console.log(pos);
+	  let currentPlayer = this.game.currentPlayer;
+	  this.game.playMove(pos);
+	  if (currentPlayer === this.game.currentPlayer) {
+	    alert("invalid move!!");
+	  } else {
+	    $square.addClass(currentPlayer);
+	    $square.text(currentPlayer);
+	  }
+	  if (this.game.winner()) {
+	    let $winnersSquares = $(`.${currentPlayer}`);
+	    $winnersSquares.addClass("winner");
+
+	    $('body').append(`<h1>Game over, ${currentPlayer} wins!!!!</h1>`);
+	  }
 	};
 
 	View.prototype.setupBoard = function () {
@@ -85,6 +105,7 @@
 	    for (var j = 0; j < 3; j++) {
 	      let $square = $("<li></li>");
 	      $square.addClass('square');
+	      $square.attr({"pos":[i,j]});
 	      $row.append($square);
 	    }
 	  }

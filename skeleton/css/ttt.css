@@ -7,9 +7,9 @@ span, article, footer, time, small {
   padding: 0;
   border: 0;
   outline: 0;
-  font: inherit;
+  font: sans-serif;
   color: inherit;
-  text-align: inherit;
+  text-align: center;
   text-decoration: inherit;
   vertical-align: inherit;
   box-sizing: inherit;
@@ -48,4 +48,24 @@ ul {
 }
 .square:hover{
   background-color: yellow;
+}
+
+.o{
+  content: "o";
+  color: green;
+  font-size: 50px;
+  background-color: white;
+  text-align: center;
+}
+
+.x{
+  content: "x";
+  color: red;
+  font-size: 50px;
+  background-color: white;
+  text-align: center;
+}
+.winner {
+  color: yellow;
+  background-color: pink;
 }
