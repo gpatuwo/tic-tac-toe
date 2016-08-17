@@ -1,0 +1,51 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/*----------------*/
+
+.row:nth-of-type(3){
+  border-bottom: 3px solid black;
+}
+.row{
+  width: 237px;
+  margin: 0 auto;
+  border-left: 3px solid black;
+}
+.square{
+  float:left;
+  border:3px solid black;
+  border-left:none;
+  border-bottom:none;
+  width:76px;
+  height:76px;
+  display: inline-block;
+  background: gray;
+}
+.square:hover{
+  background-color: yellow;
+}

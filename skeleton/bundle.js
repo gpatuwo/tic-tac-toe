@@ -48,7 +48,17 @@
 	const Game = __webpack_require__(2);
 
 	$( () => {
-	  // Your code here
+	  let $el = $('.ttt');
+
+	  let game = new Game();
+	  let view = new View(game, $el);
+	  view.setupBoard();
+
+	  // let $rows = $('.row');
+	  // debugger
+	  // let lastrow = $rows[2];
+	  // let $lastrow = $(lastrow);
+	  // $lastrow.attr("style", "border-bottom: 3px solid black");
 	});
 
 
@@ -57,6 +67,8 @@
 /***/ function(module, exports) {
 
 	var View = function (game, $el) {
+	  this.game = game;
+	  this.el = $el;
 	};
 
 	View.prototype.bindEvents = function () {
@@ -66,6 +78,16 @@
 	};
 
 	View.prototype.setupBoard = function () {
+	  for (var i = 0; i < 3; i++) {
+	    let $row = $("<ul></ul>");
+	    $row.addClass('row group');
+	    this.el.append($row);
+	    for (var j = 0; j < 3; j++) {
+	      let $square = $("<li></li>");
+	      $square.addClass('square');
+	      $row.append($square);
+	    }
+	  }
 	};
 
 	module.exports = View;
