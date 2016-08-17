@@ -82,13 +82,19 @@
 	  pos = pos.split(",").map(el=> parseInt(el));
 	  // console.log(pos);
 	  let currentPlayer = this.game.currentPlayer;
-	  this.game.playMove(pos);
-	  if (currentPlayer === this.game.currentPlayer) {
-	    alert("invalid move!!");
-	  } else {
+
+	  try {
+	    currentPlayer = this.game.currentPlayer;
+	    this.game.playMove(pos);
 	    $square.addClass(currentPlayer);
 	    $square.text(currentPlayer);
+	  } catch (e) {
+	    alert("invalid move!!");
+	    // return;
 	  }
+
+
+
 	  if (this.game.winner()) {
 	    let $winnersSquares = $(`.${currentPlayer}`);
 	    $winnersSquares.addClass("winner");
