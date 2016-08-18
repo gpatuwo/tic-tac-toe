@@ -25,7 +25,6 @@ View.prototype.makeMove = function ($square) {
     $square.text(currentPlayer);
   } catch (e) {
     alert("invalid move!!");
-    // return;
   }
 
 
